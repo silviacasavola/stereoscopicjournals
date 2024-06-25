@@ -59,6 +59,9 @@ journey through his thoughts and his photographs.</div>
 <div class="others">Design and development: Silvia Casavola<br>Supervisors: Gabriele Colombo<br>and Marian Dörk</div>
 <div class="others">Politecnico di Milano<br>MSc of Communication Design<br>July 2024</div>
 <div class="others">Stereoscopic Journals is part of the <a href="https://uclab.fh-potsdam.de/projects/gradim/">GraDiM project</a> of the <a href="https://uclab.fh-potsdam.de/">Urban Complexity Lab</a> of Fachhochschule Potsdam.</div>
+</div>
+
+<div id="overlay"></div>
   </body>
 
   <script>
@@ -86,5 +89,14 @@ journey through his thoughts and his photographs.</div>
         document.getElementById('title-img').src = 'cover/title.svg';
     }
 });
+
+document.addEventListener("DOMContentLoaded", (event) => {
+document.getElementById('overlay').style.opacity = "0";
+
+          const overlaytimeout = setTimeout(() => {
+        document.getElementById('overlay').remove();
+            clearTimeout(overlaytimeout);
+          }, 1000);
+        })
 </script>
 </html>

@@ -2,6 +2,16 @@ import * as utils from './utils.js';
 let allFramesGenerated = false;
 let firstImageHeightVh;
 let metadataArray = [];
+let imagesToLoad = 0; // Counter for images to be loaded
+let imagesLoaded = 0; // Counter for loaded images
+
+// Function to check if all images are loaded and remove the loading overlay
+function checkAllImagesLoaded() {
+    if (imagesLoaded >= imagesToLoad) {
+        // document.getElementById('loading-overlay').style.display = 'none';
+        console.log("eccoci")
+    }
+}
 
 // Function to set the width of title and metadata rows
 function setElementWidths(imgContainer) {
@@ -27,11 +37,16 @@ function createFrameElement(title, url, idx, people, place, isLast) {
     imageElement.src = url;
     imageElement.className = `image-idx-${idx}`; // Assign class based on idx
 
+    imagesToLoad++; // Increment the counter for images to be loaded
+
     imageElement.onload = () => {
         setElementWidths(imgContainer);
+        imagesLoaded++; // Increment the counter for loaded images
+        checkAllImagesLoaded(); // Check if all images are loaded
     };
 
     imgContainer.append(imageElement);
+    imgContainer.append(utils.createElement('div', 'sfumatura-verticale'));
 
     let titleRow = utils.createElement('div', 'title-row', title);
     let metadataLayoutElement = utils.createElement('div', 'metadata-layout');
@@ -59,13 +74,19 @@ function createFirstImageFrame(title, url, idx, people, place) {
     let imageElement = document.createElement('img');
     imageElement.src = url;
     imageElement.className = `image-idx-${idx}`; // Assign class based on idx
+
+    imagesToLoad++; // Increment the counter for images to be loaded
+
     imageElement.onload = () => {
         if (!firstImageHeightVh) {
             firstImageHeightVh = imageElement.clientHeight / window.innerHeight * 100;
             setImageHeights(firstImageHeightVh);
         }
         setElementWidths(imgContainer);
+        imagesLoaded++; // Increment the counter for loaded images
+        checkAllImagesLoaded(); // Check if all images are loaded
     };
+
     imgContainer.append(imageElement);
     imgContainer.append(utils.createElement('div', 'sfumatura-verticale'));
 
@@ -97,8 +118,6 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
 
         let frameContainer = utils.createElement('div', 'frame-container');
         let outerFrame = utils.createElement('div', 'outer-frame');
-
-        outerFrame.append(utils.createElement('div', 'sfumatura-verticale'));
 
         let dotspan = utils.createElement('span', 'dot');
 
