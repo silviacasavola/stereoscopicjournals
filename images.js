@@ -132,12 +132,12 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
             dotspan.classList.add('disconnected');
         } else {
             frameContainer.classList.add('connected');
-        }
 
-        if (recordIndex === 0) {
-            frameContainer.classList.add('active');
-            dotspan.classList.add('active');
-          }
+            if (recordIndex === 0) {
+                frameContainer.classList.add('active');
+                dotspan.classList.add('active');
+              }
+        }
     }
 
     parentElement.appendChild(fragment);
@@ -206,7 +206,7 @@ function updateInformationOnScroll(outerFrame) {
 }
 
 function addNumber() {
-    let connected = Array.from(document.querySelectorAll('#images-container.connected'));
+    let connected = Array.from(document.querySelectorAll('.frame-container.connected'));
     connected.forEach((d) => {
         d.querySelector('.dot').innerHTML = (connected.indexOf(d) + 1);
         d.querySelector('.dot').setAttribute('data-dot-id', (connected.indexOf(d) + 1));
