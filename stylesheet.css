@@ -368,7 +368,8 @@ padding-left: 2vw;
   transition: opacity linear 1s;
   /* margin-top: 2.5em; */
   /* background-color: var(--white); */
-  background: linear-gradient(90deg, rgba(248, 248, 248, 0) 0%, var(--white) 20%);
+  /* background: linear-gradient(90deg, rgba(248, 248, 248, 0) 0%, var(--white) 20%); */
+background: radial-gradient(circle, var(--white) 70%, rgba(248, 248, 248, 0) 100%);
   /* font-size: var(--medium-text); */
 }
 
