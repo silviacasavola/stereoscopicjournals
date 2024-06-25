@@ -39,6 +39,7 @@ let savedContent;
 
     if (i === 2) {
     object = document.querySelector('#images-column .disconnected');
+    object.classList.toggle('fakehover')
     text = "Click on the collapsed elements<br>to make them unfold.";
     document.getElementById('arrowbtn').innerHTML = '↖';
     const rect = object.getBoundingClientRect();
@@ -53,6 +54,7 @@ let savedContent;
     }
 
     if (i === 3) {
+    object.classList.toggle('fakehover')
     document.getElementById('images-column').scrollTo({ top: 0, behavior: 'smooth' });
     object = document.querySelector('#images-column .disconnected');
     text = "Keep an eye on the scollbar<br>to keep track of the changes.";

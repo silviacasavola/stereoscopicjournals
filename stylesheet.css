@@ -461,20 +461,20 @@ background-clip: text;
   overflow: hidden;
 }
 
-.frame-container.hidden:hover .img-container {
+.frame-container.hidden:hover .img-container, .frame-container.fakehover .img-container {
   max-height: 8vh;
 }
 
-.frame-container.hidden:hover .dot {
+.frame-container.hidden:hover .dot, .frame-continer.fakehover .dot {
   max-height: 20vh;
   bottom: 0;
 }
 
-.frame-container.disconnected.hidden:hover .dot {
+.frame-container.disconnected.hidden:hover .dot, .frame-container.fakehover .dot {
   border:solid 0.5px;
 }
 
-.frame-container.hidden:hover .title-row {
+.frame-container.hidden:hover .title-row, .frame-container.fakehover .title-row {
   max-height: 10vh;
   padding-top: var(--margin);
 }
