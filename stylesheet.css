@@ -237,11 +237,8 @@ padding-top: 1.5vw;
 
 .frame-container {
   position: relative;
-  /* max-height: 93vh; */
   max-height: 98vh;
   transition: max-height 1s, width 1s;
-  /* padding: var(--margin) 0 0 var(--margin); */
-  /* padding-top: var(--margin); */
   overflow: hidden;
   max-width: 100%;
   display: flex;
@@ -266,44 +263,50 @@ padding-top: 1.5vw;
   position: relative;
   /* column-gap: calc(2 * var(--margin) / 3); */
   /* flex: 1 0 auto; */
-  padding-right: calc(2* var(--margin) / 3);
+  padding-right: calc(2 * var(--margin) / 3);
   z-index: 0;
   padding-left: var(--margin) 0 0 var(--margin);
 }
 
 .frame {
-    display: inline-flex;
-    flex-direction: column;
-    flex: 1 0 auto;
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-    max-height: 100%;
-    scroll-snap-align: start;
-    /* row-gap: calc(2*var(--margin)/3); */
-    overflow: hidden;
-    /* padding: var(--margin) 0 0 var(--margin); */
-    padding-left: var(--margin);
+  display: inline-flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+  scroll-snap-align: start;
+  padding-left: var(--margin);
+  flex: 1 0 auto;
 }
 
 .img-container {
   display: inline-flex;
   align-items: center;
+  justify-content: left; /* Center the image horizontally */
   transition: max-height 1s;
-  /* justify-content: center; */
-  /* overflow: hidden; */
-  /* flex: 1 0 auto;
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-  max-height: 100%; */
+  width: fit-content;
+  /* border: solid red; */
+  flex-shrink: 0;
+  max-height: 80vh;
+}
+.img-container.last {
+  width: 100%
+}
+
+.title-row,
+.metadata-layout {
+  flex-grow: 1; /* Allow these elements to grow */
+  flex-shrink: 1; /* Allow these elements to shrink */
+  min-width: 0; /* Ensure they can shrink below their content width */
 }
 
 .img-container img {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 98vh; /* Adjust based on container height */
   width: auto; /* Allow width to scale */
-  height: 100%; /* Ensure height takes full container height */
+  height: auto; /* Allow height to scale */
   object-fit: contain; /* Ensure image is fully visible */
   box-sizing: border-box;
   display: block;
@@ -315,11 +318,10 @@ padding-top: 1.5vw;
   font-size: var(--small-text);
   line-height: var(--medium-text);
   color: var(--dark-grey);
-  /* padding-right: 8em !important; */
   position: relative;
-  /* padding-left: var(--margin); */
   padding-left: 2vw;
 }
+
 
 /* .frame div {
   padding-right: calc(2*var(--margin)/3);
@@ -335,13 +337,14 @@ display: none;
 /* padding-left: 2em; */
 font-size: var(--medium-text);
 line-height: 1em;
+transition: max-height 1s, padding-top 1s;
 /* flex: 0 1 auto; */
 text-transform: uppercase;
 /* column-gap: var(--margin); */
 z-index: 20;
 padding-right: calc(2* var(--margin) / 3);
-padding-top: 1em;
-padding-bottom: 0.7em;
+padding-top: 1.5em;
+padding-bottom: 0.5em;
 /* align-items: flex-end; */
 padding-left: 2vw;
 }
@@ -357,14 +360,14 @@ padding-left: 2vw;
   font-size: var(--small-text);
   /* right: var(--margin); */
   padding-right: calc(var(--margin)/1.5);
-  padding-left: calc(var(--margin)/1.5);
+  padding-left: var(--margin);
   z-index: 11;
   right: 0;
   bottom: var(--margin);
   transition: opacity linear 1s;
   /* margin-top: 2.5em; */
   /* background-color: var(--white); */
-  background: linear-gradient(90deg, rgba(248, 248, 248, 0) 0%, var(--white) 30%);
+  background: linear-gradient(90deg, rgba(248, 248, 248, 0) 0%, var(--white) 20%);
   /* font-size: var(--medium-text); */
 }
 
@@ -399,7 +402,9 @@ margin-bottom: 0.5em;
 .frame-container.hidden {
 /* max-height: 2vw; */
 cursor: pointer;
-padding-top: calc(var(--margin)/2);
+margin-top: var(--margin);
+padding-top:0;
+  /* max-height: 5vh; */
 /* overflow: hidden; */
 /* background: linear-gradient(90deg, #212121 70%, rgba(0, 0, 0, 0.00) 100%);
 background-clip: text;
@@ -435,22 +440,34 @@ background-clip: text;
   z-index: 10;
 }
 
-/* .frame-container.hidden .frame {
-  overflow: hidden;
+/* .hidden .scroll-handles, .hidden .title-row, .hidden .metadata-row, .hidden .dot {
+  display: none;
 } */
 
-.hidden .scroll-handles, .hidden .title-row, .hidden .metadata-row, .hidden .dot {
-  /* max-height: 3vh; */
-  display: none;
+.hidden .scroll-handles, .hidden .title-row, .hidden .metadata-layout, .hidden .dot {
+  max-height: 0;
+  overflow: hidden;
+  border: none;
+  /* padding: 0; */
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .hidden .img-container {
   max-height: 5vh;
+  padding-top: var(--margin);
+  overflow: hidden;
 }
 
-.hidden .img-container:hover {
-  max-height: 8vh;
-  /* border:solid; */
+.frame-container.hidden:hover .dot {
+  max-height: 20vh;
+  border:solid 0.5px;
+  bottom: 0;
+}
+
+.frame-container.hidden:hover .title-row {
+  max-height: 10vh;
+  padding-top: var(--margin);
 }
 
 .frame-container:hover {
