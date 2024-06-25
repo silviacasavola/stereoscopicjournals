@@ -461,7 +461,9 @@ background-clip: text;
   max-height: 5vh;
   overflow: hidden;
 }
-
+.hidden .outer-frame {
+  overflow-x: hidden;
+}
 .frame-container.hidden:hover .img-container, .frame-container.fakehover .img-container {
   max-height: 8vh;
 }
@@ -652,6 +654,7 @@ font-size: var(--small-text);
   display: flex;
   align-items: center;
   text-align: center;
+  justify-content: center;
 }
 
 .overlay {
@@ -670,7 +673,6 @@ font-size: var(--small-text);
 
 #overlay1 span {
   text-align: center;
-  width: 100%;
   animation-name: overlayanimation;
   animation-duration: 1s;
   animation-iteration-count: infinite;

@@ -2,16 +2,6 @@ import * as utils from './utils.js';
 let allFramesGenerated = false;
 let firstImageHeightVh;
 let metadataArray = [];
-let imagesToLoad = 0; // Counter for images to be loaded
-let imagesLoaded = 0; // Counter for loaded images
-
-// Function to check if all images are loaded and remove the loading overlay
-function checkAllImagesLoaded() {
-    if (imagesLoaded >= imagesToLoad) {
-        // document.getElementById('loading-overlay').style.display = 'none';
-        console.log("eccoci")
-    }
-}
 
 // Function to set the width of title and metadata rows
 function setElementWidths(imgContainer) {
@@ -36,14 +26,6 @@ function createFrameElement(title, url, idx, people, place, isLast) {
     let imageElement = document.createElement('img');
     imageElement.src = url;
     imageElement.className = `image-idx-${idx}`; // Assign class based on idx
-
-    imagesToLoad++; // Increment the counter for images to be loaded
-
-    imageElement.onload = () => {
-        setElementWidths(imgContainer);
-        imagesLoaded++; // Increment the counter for loaded images
-        checkAllImagesLoaded(); // Check if all images are loaded
-    };
 
     imgContainer.append(imageElement);
     imgContainer.append(utils.createElement('div', 'sfumatura-verticale'));
@@ -74,19 +56,13 @@ function createFirstImageFrame(title, url, idx, people, place) {
     let imageElement = document.createElement('img');
     imageElement.src = url;
     imageElement.className = `image-idx-${idx}`; // Assign class based on idx
-
-    imagesToLoad++; // Increment the counter for images to be loaded
-
     imageElement.onload = () => {
         if (!firstImageHeightVh) {
             firstImageHeightVh = imageElement.clientHeight / window.innerHeight * 100;
             setImageHeights(firstImageHeightVh);
         }
         setElementWidths(imgContainer);
-        imagesLoaded++; // Increment the counter for loaded images
-        checkAllImagesLoaded(); // Check if all images are loaded
     };
-
     imgContainer.append(imageElement);
     imgContainer.append(utils.createElement('div', 'sfumatura-verticale'));
 
@@ -108,10 +84,21 @@ function createFirstImageFrame(title, url, idx, people, place) {
     return frameElement;
 }
 
+// Function to load images and return a promise that resolves when all images are loaded
+function loadImage(url) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = resolve;
+        img.onerror = reject;
+    });
+}
+
 // Function to load and display images
 export async function loadAndDisplayImages(records, metadataMain, parentId) {
     let parentElement = document.getElementById(parentId);
     let fragment = document.createDocumentFragment();
+    let imagePromises = [];
 
     for (let recordIndex = 0; recordIndex < records.length; recordIndex++) {
         let record = records[recordIndex];
@@ -140,6 +127,7 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
                 );
 
                 outerFrame.appendChild(firstFrameElement);
+                imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/large/${id}.jpg`));
 
                 metadataArray.push({
                     element: firstFrameElement,
@@ -173,6 +161,7 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
                 );
 
                 outerFrame.appendChild(frameElement);
+                imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/large/${id}.jpg`));
 
                 metadataArray.push({
                     element: frameElement,
@@ -246,6 +235,16 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
             updateMetadata(meta.photonumElement, meta.metadata.idx, meta.metadata.length);
         }
     });
+
+    // Wait for all images to load before removing the loading overlay
+    try {
+        await Promise.all(imagePromises);
+        // document.getElementById('loading-overlay').style.display = 'none';
+        // console.log("hey")
+        removeLoadingOverlay();
+    } catch (error) {
+        console.error('Error loading images', error);
+    }
 }
 
 function updateMetadata(photonumElement, idx, length) {
@@ -323,3 +322,12 @@ function setImageHeights(firstImageHeightVh) {
 }
 
 window.addEventListener('resize', setImageHeights);
+
+
+function removeLoadingOverlay() {
+  document.getElementById('overlay1').classList.toggle('removed');
+    const overlaytimeout = setTimeout(() => {
+  document.getElementById('overlay1').remove();
+      clearTimeout(overlaytimeout);
+    }, 1600);
+}

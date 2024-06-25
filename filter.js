@@ -225,7 +225,7 @@ function frameReplacement() {
             // Add event listeners after replacing elements
             addEvent(jsonData);
             // attachArrowEventListeners()
-            removeLoadingOverlay()
+            // removeLoadingOverlay()
         })
         .catch(error => console.error('Error fetching or parsing JSON:', error));
 }
@@ -414,7 +414,7 @@ function frameReplacement() {
 
             // Find the closest .page and .dot to the top of the viewport
             const closestPage = getClosestElement(textColumn, '.page');
-            const closestDot = getClosestElement(imagesColumn, '.dot');
+            const closestDot = getClosestElement(imagesColumn, '.image-container.connected');
 
             setTimeout(() => {
                 // Scroll to the closest .page
@@ -467,30 +467,30 @@ function frameReplacement() {
     //     })
     //   })
     //  }
-
-function removeLoadingOverlay() {
-  // console.log("la funzione è partita eh")
-
-  let linksnumber = document.querySelectorAll('#images-column .filter-link').length;
-  let imgsnumber = document.querySelectorAll('img').length;
-  let overlay = document.getElementById('overlay1');
-  if (linksnumber && imgsnumber && linksnumber > 100 && imgsnumber > 100) {
-  // console.log("ci siamo...")
-  overlay.classList.toggle('removed');
-
-    const overlaytimeout = setTimeout(() => {
-  document.getElementById('overlay1').remove();
-      clearTimeout(overlaytimeout);
-    }, 1600);
-} else {
-  // console.log("here we go again" + linksnumber)
-  const otheroverlaytimeout = setTimeout(() => {
-    removeLoadingOverlay()
-    // frameReplacement()
-    clearTimeout(otheroverlaytimeout);
-  }, 1000);
-}
-}
+//
+// function removeLoadingOverlay() {
+//   // console.log("la funzione è partita eh")
+//
+//   let linksnumber = document.querySelectorAll('#images-column .filter-link').length;
+//   let imgsnumber = document.querySelectorAll('img').length;
+//   let overlay = document.getElementById('overlay1');
+//   if (linksnumber && imgsnumber && linksnumber > 100 && imgsnumber > 100) {
+//   // console.log("ci siamo...")
+//   overlay.classList.toggle('removed');
+//
+//     const overlaytimeout = setTimeout(() => {
+//   document.getElementById('overlay1').remove();
+//       clearTimeout(overlaytimeout);
+//     }, 1600);
+// } else {
+//   // console.log("here we go again" + linksnumber)
+//   const otheroverlaytimeout = setTimeout(() => {
+//     removeLoadingOverlay()
+//     // frameReplacement()
+//     clearTimeout(otheroverlaytimeout);
+//   }, 1000);
+// }
+// }
          // function highlightFilter(checkbox) {
          //   let classname = checkbox.value + "-link";
          //   let elements = document.getElementsByClassName(classname);
