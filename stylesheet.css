@@ -2,7 +2,7 @@
 /* MARGINS */
   --margin: 1.2vw;
   --button-margin: var(--margin) calc(var(--margin)*2) var(--margin) calc(var(--margin)*2);
-  --header-padding: calc(var(--margin)/4) var(--margin) var(--margin) var(--margin);
+  --header-padding: calc(var(--margin)/4) 2.2vw var(--margin) var(--margin);
   --xlarge-text: 5vw;
   --large-text: 1.2vw;
   --medium-text: 0.9vw;
@@ -290,6 +290,7 @@ padding-top: 1.5vw;
   /* border: solid red; */
   flex-shrink: 0;
   max-height: 80vh;
+  position: relative;
 }
 .img-container.last {
   width: 100%
@@ -402,7 +403,8 @@ margin-bottom: 0.5em;
 .frame-container.hidden {
 /* max-height: 2vw; */
 cursor: pointer;
-margin-top: var(--margin);
+/* margin-top: var(--margin); */
+margin-top: calc(var(--margin)/2);
 padding-top:0;
   /* max-height: 5vh; */
 /* overflow: hidden; */
@@ -417,7 +419,8 @@ background-clip: text;
   display: none;
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(248, 248, 248, 0) 70%, var(--white) 95%);
+  background: linear-gradient(180deg, var(--white) 0%, rgba(248, 248, 248, 0) 20%, rgba(248, 248, 248, 0) 70%, var(--white) 95%);
+  /* background: linear-gradient(180deg, rgba(248, 248, 248, 0) 70%, var(--white) 95%); */
 }
 
 .hidden .sfumatura-verticale {
@@ -455,14 +458,20 @@ background-clip: text;
 
 .hidden .img-container {
   max-height: 5vh;
-  padding-top: var(--margin);
   overflow: hidden;
+}
+
+.frame-container.hidden:hover .img-container {
+  max-height: 8vh;
 }
 
 .frame-container.hidden:hover .dot {
   max-height: 20vh;
-  border:solid 0.5px;
   bottom: 0;
+}
+
+.frame-container.disconnected.hidden:hover .dot {
+  border:solid 0.5px;
 }
 
 .frame-container.hidden:hover .title-row {
@@ -698,14 +707,7 @@ font-size: var(--small-text);
   text-align: center;
   padding: calc(var(--margin)/2);
   min-height: 15vw;
-}
-
-#tutorial-bg {
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background-color: var(--header-grey);
-  filter: blur(3px);
-  z-index: 0;
+  background: var(--header-grey);
 }
 
 #tut-box div {

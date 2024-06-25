@@ -56,11 +56,11 @@ function highlightElement(container, element) {
 function scrollToElement(container, element) {
     const column = container.parentNode;
     const position = element.getBoundingClientRect().top + column.scrollTop;
-    column.scrollTo({ top: position - 64, behavior: 'smooth' });
+    column.scrollTo({ top: position - 50, behavior: 'smooth' });
 }
 
 export function scrollHandler(event) {
-    const scrollTop = this.scrollTop - 64;
+    const scrollTop = this.scrollTop - 50;
 
     let { sourceContainer, targetContainer } = getSourceAndTargetContainers(event);
 
@@ -111,7 +111,7 @@ function elementClickHandler(event) {
 }
 
 export function handleP5Scroll(element) {
-    const scrollTop = element.scrollTop - 64;
+    const scrollTop = element.scrollTop - 50;
 
     let sourceContainer = element.children[0];
     let targetContainerId = element.id === 'text-column' ? 'images-column' : 'text-column';

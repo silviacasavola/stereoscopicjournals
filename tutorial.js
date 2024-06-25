@@ -46,7 +46,7 @@ let savedContent;
     document.getElementById('images-column').scrollTo({ top: t, behavior: 'smooth' });
     t = rect.top + window.scrollY;
     l = rect.left + window.scrollX;
-    popup.style.top = `${t}px`;
+    popup.style.bottom = `${b}px`;
     popup.style.left = `${l}px`;
     popup.style.transform = 'translate(50%,-110%)';
     savedContent = Array.from(object.querySelectorAll('div'));
