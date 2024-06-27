@@ -89,24 +89,48 @@ export function scrollHandler(event) {
     }
 }
 
+export function attachDotsEventListeners() {
+    setTimeout(() => {
+        let allDots = Array.from(document.querySelectorAll('.dot'));
+
+        allDots.forEach(dot => {
+            dot.addEventListener('click', function(event) {
+                elementClickHandler(event);
+            });
+        });
+    }, 1000);
+}
+
 function elementClickHandler(event) {
     let textColumn = document.getElementById('text-column');
     let imagesColumn = document.getElementById('images-column');
 
-    let sourceContainer = textColumn.children[0];
-    let targetContainer = imagesColumn.children[0];
+    let sourceColumn, targetColumn;
+    if (event.target.closest('#text-column')) {
+        sourceColumn = textColumn;
+        targetColumn = imagesColumn;
+    } else {
+        sourceColumn = imagesColumn;
+        targetColumn = textColumn;
+    }
 
-    let clickedElement = event.target.closest('.chrono-link, .frame-container.connected');
+    let sourceContainer = sourceColumn.children[0];
+    let targetContainer = targetColumn.children[0];
 
-    scrollToElement(sourceContainer, clickedElement);
+    // let clickedElement = event.target.closest('.dot');
+    let dataSelector = event.target.getAttribute('data-dot-id');
 
-    highlightElement(sourceContainer, clickedElement);
+    if (dataSelector !== null) {
+        let matchingDot = targetContainer.querySelector(`.dot[data-dot-id="${dataSelector}"]`);
+        let matchingElement = matchingDot.closest('.frame-container.connected') || matchingDot.closest('.page') ;
+        console.log(matchingDot, matchingElement)
 
-    let matchingElement = targetContainer.querySelector(`.frame-container.connected, .chrono-link`);
-
-    if (matchingElement) {
-        scrollToElement(targetContainer, matchingElement);
-        highlightElement(targetContainer, matchingElement);
+        if (matchingElement) {
+            scrollToElement(sourceContainer, event.target);
+            scrollToElement(targetContainer, matchingElement);
+            highlightElement(sourceContainer, event.target);
+            highlightElement(targetContainer, matchingElement);
+        }
     }
 }
 
@@ -135,6 +159,7 @@ export function handleP5Scroll(element) {
 
         if (!targetContainerParent.classList.contains('hidden') && !sourceContainerParent.classList.contains('hidden')) {
             scrollToElement(targetContainer, targetElement);
+            scrollToElement(sourceContainer,  sourceElement.element);
         }
 
         highlightElement(sourceContainer, sourceElement.element);

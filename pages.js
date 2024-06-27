@@ -1,4 +1,5 @@
 import * as utils from './utils.js';
+import * as scroll from './scroll.js';
 
 export async function loadText(url) {
     const file = await fetch(url);
@@ -47,7 +48,7 @@ export async function loadAndDisplayPages(text, parentId) {
     dot.setAttribute('data-dot-id', index+1);
     link.append(dot)
     if (index === 0) {link.classList.add('active')}
-  })
+    });
 
     return true;
 }

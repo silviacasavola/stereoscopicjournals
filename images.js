@@ -1,4 +1,5 @@
 import * as utils from './utils.js';
+import * as scroll from './scroll.js';
 let allFramesGenerated = false;
 let firstImageHeightVh;
 let metadataArray = [];
@@ -26,6 +27,10 @@ function createFrameElement(title, url, idx, people, place, isLast) {
     let imageElement = document.createElement('img');
     imageElement.src = url;
     imageElement.className = `image-idx-${idx}`; // Assign class based on idx
+
+    imageElement.onload = () => {
+        setElementWidths(imgContainer);
+    };
 
     imgContainer.append(imageElement);
     imgContainer.append(utils.createElement('div', 'sfumatura-verticale'));
@@ -120,14 +125,17 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
             if (currentMetadata) {
                 let firstFrameElement = createFirstImageFrame(
                     currentMetadata.Title,
-                    `https://gradim.fh-potsdam.de/omeka-s/files/large/${id}.jpg`,
+                    `https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`,
                     0,
                     currentMetadata.metaDepictedPeople,
                     record.place
                 );
 
                 outerFrame.appendChild(firstFrameElement);
-                imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/large/${id}.jpg`));
+
+                if (recordIndex < 20) {
+                imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`));
+                }
 
                 metadataArray.push({
                     element: firstFrameElement,
@@ -153,7 +161,7 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
             if (currentMetadata) {
                 let frameElement = createFrameElement(
                     currentMetadata.Title,
-                    `https://gradim.fh-potsdam.de/omeka-s/files/large/${id}.jpg`,
+                    `https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`,
                     i,
                     currentMetadata.metaDepictedPeople,
                     record.place,
@@ -161,7 +169,7 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
                 );
 
                 outerFrame.appendChild(frameElement);
-                imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/large/${id}.jpg`));
+                imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`));
 
                 metadataArray.push({
                     element: frameElement,
@@ -239,9 +247,8 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
     // Wait for all images to load before removing the loading overlay
     try {
         await Promise.all(imagePromises);
-        // document.getElementById('loading-overlay').style.display = 'none';
-        // console.log("hey")
         removeLoadingOverlay();
+        scroll.attachDotsEventListeners();
     } catch (error) {
         console.error('Error loading images', error);
     }
@@ -323,11 +330,10 @@ function setImageHeights(firstImageHeightVh) {
 
 window.addEventListener('resize', setImageHeights);
 
-
 function removeLoadingOverlay() {
-  document.getElementById('overlay1').classList.toggle('removed');
+    document.getElementById('overlay1').classList.toggle('removed');
     const overlaytimeout = setTimeout(() => {
-  document.getElementById('overlay1').remove();
-      clearTimeout(overlaytimeout);
+        document.getElementById('overlay1').remove();
+        clearTimeout(overlaytimeout);
     }, 1600);
 }
