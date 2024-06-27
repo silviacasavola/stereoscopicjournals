@@ -7,6 +7,29 @@ let t, b, r, l;
 let text;
 let savedContent;
 
+// export function beginningtime() {
+//     const textContainer = document.getElementById('text-container');
+//     const imagesColumn = document.getElementById('images-column');
+//
+//     function smoothScroll(element, top, duration) {
+//         return new Promise(resolve => {
+//             element.scrollTo({ top, behavior: 'smooth' });
+//             setTimeout(resolve, duration);
+//         });
+//     }
+//
+//     async function executeScroll() {
+//         await smoothScroll(textContainer, 200, 250); // Scroll down to 200px over 1000ms
+//         await smoothScroll(textContainer, 0, 750);   // Scroll back to top over 1000ms
+//         await smoothScroll(imagesColumn, 200, 1250);  // Scroll down to 200px over 1000ms
+//         await smoothScroll(imagesColumn, 0, 1750);    // Scroll back to top over 1000ms
+//     }
+//
+//     executeScroll();
+// }
+
+
+
   document.getElementById('nextbtn').addEventListener('click', (event) => {
 
     if (i < 4) {

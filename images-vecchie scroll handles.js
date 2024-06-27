@@ -170,8 +170,6 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
                 );
 
                 outerFrame.appendChild(frameElement);
-
-                frameElement.classList.add('invisible')
                 imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`));
 
                 metadataArray.push({
@@ -236,7 +234,7 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
 
     if (allFramesGenerated) {
         toggleHidden();
-        // addNumber();
+        addNumber();
         setImageHeights();
     }
 
@@ -289,15 +287,6 @@ function updateInformationOnScroll(outerFrame) {
                 minDistance = distance;
                 visibleFrameMiddleIdx = i;
             }
-        }
-    }
-
-    let allframes = Array.from(outerFrame.querySelectorAll('.frame'));
-    for (let y = 0; y < allframes.length; y++) {
-        if (y != visibleFrameMiddleIdx) {
-            allframes[y].classList.add('invisible');
-        } else {
-            allframes[y].classList.remove('invisible');
         }
     }
 

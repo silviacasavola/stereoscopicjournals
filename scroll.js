@@ -91,7 +91,10 @@ export function scrollHandler(event) {
 
 export function attachDotsEventListeners() {
     setTimeout(() => {
-        let allDots = Array.from(document.querySelectorAll('.dot'));
+        let allDots = Array.from(document.querySelectorAll('.dot')).filter(
+            (d) => !d.classList.contains('disconnected')
+        );
+
 
         allDots.forEach(dot => {
             dot.addEventListener('click', function(event) {
