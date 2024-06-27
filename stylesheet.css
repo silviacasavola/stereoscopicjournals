@@ -554,9 +554,9 @@ background-clip: text;
 }
 
 
-/* .filter-link.selected .closebtn {
+.filter-link.selected .closebtn {
   display: inline;
-} */
+}
 
 .filter-link.selected, .filter-link:hover {
   color:var(--white);

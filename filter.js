@@ -291,6 +291,9 @@ function thenScroll(flink) {
     const getClosestElement = (container, selector) => {
       const elements = Array.from(container.querySelectorAll(selector));
       const viewportTop = container.getBoundingClientRect().top;
+      if (elements.length === 0) {
+        return null; // Return null if there are no elements to avoid error
+      }
       return elements.reduce((closest, el) => {
         const elTop = el.getBoundingClientRect().top;
         const distance = Math.abs(elTop - viewportTop);
@@ -298,7 +301,7 @@ function thenScroll(flink) {
           return { element: el, distance };
         }
         return closest;
-      }, null).element;
+      }, { element: null, distance: Infinity }).element;
     };
 
     const closestPage = getClosestElement(textColumn, '.page');
@@ -322,51 +325,4 @@ function thenScroll(flink) {
       }
     }, 1000);
   }
-}
-
-function textReplacement() {
-  pages = Array.from(document.querySelectorAll('.page'));
-  fetch('data/data.json')
-    .then(response => response.json())
-    .then(data => {
-      jsonData = data;
-
-      pages.forEach(page => {
-        replacePeopleInElement(page, jsonData);
-        replacePlacesInElement(page, jsonData);
-        replaceKeywordsInElement(page, jsonData);
-      });
-
-      const nestedLinks = document.querySelectorAll('.filter-link .filter-link');
-      nestedLinks.forEach(span => {
-        span.parentNode.replaceChild(span.firstChild, span);
-      });
-
-      addEvent(jsonData);
-    });
-}
-
-function frameReplacement() {
-  fetch('data/data.json')
-    .then(response => response.json())
-    .then(data => {
-      jsonData = data;
-
-      const metadatacells = document.querySelectorAll('.metadata-layout');
-      const titlecells = document.querySelectorAll('.frame .title');
-
-      metadatacells.forEach(element => {
-        replacePeopleInElement(element, jsonData);
-        replacePlacesInElement(element, jsonData);
-        replaceKeywordsInElement(element, jsonData);
-      });
-
-      const nestedLinks = document.querySelectorAll('.filter-link .filter-link');
-      nestedLinks.forEach(span => {
-        span.parentNode.replaceChild(span.firstChild, span);
-      });
-
-      addEvent(jsonData);
-    })
-    .catch(error => console.error('Error fetching or parsing JSON:', error));
 }
