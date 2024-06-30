@@ -46,7 +46,7 @@ let savedContent;
 
     if (i === 1) {
     object = document.querySelector('.page .filter-link');
-    text = "Click on the highlighted entities<br>to follow their story-line.<br>Click on the X to disable them.";
+    text = "Click on the highlighted entities<br>both in the text and in the photo descriptions<br>to follow their story-line.<br>Click on the X to disable them.";
     document.getElementById('arrowbtn').innerHTML = '→';
     popup.style.transform = 'translate(-110%, -10%)';
     savedContent = object.closest('.page');
@@ -80,7 +80,7 @@ let savedContent;
     object.classList.toggle('fakehover')
     document.getElementById('images-column').scrollTo({ top: 0, behavior: 'smooth' });
     object = document.querySelector('#images-column .disconnected');
-    text = "Keep an eye on the scollbar<br>to keep track of the changes.";
+    text = "Keep an eye on the scollbar<br>to monitor the changes.";
     document.getElementById('arrowbtn').innerHTML = '→';
     popup.style.right = '2vw';
     popup.style.left = '';
