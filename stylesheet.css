@@ -13,6 +13,7 @@
   --dark-grey: #585858;
   --white: #F8F8F8;
   --black: #101010;
+  --almost-black: #212121;
 
   --header-grey: #ebeaea;
 
@@ -60,13 +61,13 @@ body {
   line-height: 1em;
   /* background: linear-gradient(180deg, var(--header-grey) 50%, rgba(255, 255, 255, 0) 80%); */
   background: var(--white);
-  /* color: var(--dark-grey); */
+  color: var(--dark-grey);
   font-size: var(--medium-text);
   transition: top 1s;
   /* font-style: italic; */
 }
 
-#header a:hover, #theme-toggle:hover {
+#theme-toggle:hover {
   color: var(--black);
   text-decoration: underline;
 }
@@ -90,7 +91,6 @@ body {
   /* padding: 3vw var(--margin) 3vw var(--margin); */
   flex-wrap: wrap;
   text-align: center;
-  color: var(--dark-grey);
 }
 
 #big-title {
@@ -155,6 +155,11 @@ padding-top: 2vw;
     width: 1vw;
     overflow: hidden;
     z-index:40;
+    cursor: pointer;
+}
+
+canvas {
+  cursor: pointer;
 }
 
 /* TEXT */
@@ -312,7 +317,8 @@ padding-top: 2vw;
 
 .img-container img {
   max-width: 100%;
-  max-height: 98vh; /* Adjust based on container height */
+  max-height: 100%;
+  /* max-height: 98vh; /* Adjust based on container height */ */
   width: auto; /* Allow width to scale */
   height: auto; /* Allow height to scale */
   object-fit: contain; /* Ensure image is fully visible */
@@ -322,7 +328,7 @@ padding-top: 2vw;
 
 .metadata-layout {
   column-count: 2;
-  column-gap: 1em;
+  column-gap:2em;
   font-size: var(--small-text);
   line-height: var(--medium-text);
   color: var(--dark-grey);
@@ -385,7 +391,7 @@ background: radial-gradient(circle, var(--white) 70%, rgba(248, 248, 248, 0) 100
 
 /* HIDDEN STUFF */
 .page.hidden {
-background: linear-gradient(180deg, #212121 78.12%, rgba(0, 0, 0, 0.00) 100%);
+background: linear-gradient(180deg, var(--almost-black) 78.12%, rgba(0, 0, 0, 0.00) 100%);
 max-height: 1em;
 background-clip: text;
 -webkit-background-clip: text;
@@ -806,4 +812,13 @@ font-size: var(--small-text);
 #overlay3 {
   display: flex;
 }
+}
+
+#finale {font-family: 'source-code-pro'; width: 100%; text-align: center;margin-top: var(--margin); font-size: var(--medium-text);}
+#finale a {
+  color: var(--dark-grey);
+}
+
+#finale a:hover {
+  color: var(--black);
 }

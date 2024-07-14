@@ -36,6 +36,8 @@
   <!-- <div id="big-title">1986</div> -->
         </div>
       </div>
+
+    <div id="finale"><a href="index.html">⮌ Explore other diaries.</a></div>
     </div>
 
     <div id="graph-column" class="layout-column"></div>
@@ -82,25 +84,40 @@
 
   <script>
 
-  document.getElementById('theme-toggle').addEventListener('click', function() {
-    const root = document.documentElement;
-    const white = getComputedStyle(root).getPropertyValue('--white').trim();
+  document.addEventListener('DOMContentLoaded', (event) => {
+      const root = document.documentElement;
+      const themeToggleBtn = document.getElementById('theme-toggle');
 
-    if (white === '#F8F8F8' || white === 'rgb(248, 248, 248)') {
-        root.style.setProperty('--white', '#0d0d0d');
-        root.style.setProperty('--black', '#f4f4f4');
-        root.style.setProperty('--grey', '#585858');
-        root.style.setProperty('--dark-grey', '#E0E0E0');
-        root.style.setProperty('--header-grey', '#000000');
-        this.textContent = 'light mode';
-    } else {
-        root.style.setProperty('--white', '#F8F8F8');
-        root.style.setProperty('--black', '#101010');
-        root.style.setProperty('--grey', '#E0E0E0');
-        root.style.setProperty('--dark-grey', '#585858');
-        root.style.setProperty('--header-grey', '#ebeaea');
-        this.textContent = 'dark mode';
-    }
-});
+      function setTheme(theme) {
+          if (theme === 'dark') {
+              root.style.setProperty('--white', '#0d0d0d');
+              root.style.setProperty('--black', '#f4f4f4');
+              root.style.setProperty('--grey', '#484848');
+              root.style.setProperty('--dark-grey', '#E0E0E0');
+              root.style.setProperty('--header-grey', '#000000');
+              root.style.setProperty('--almost-black', '#e3e3e3');
+              themeToggleBtn.textContent = 'light mode';
+          } else {
+              root.style.setProperty('--white', '#F8F8F8');
+              root.style.setProperty('--black', '#101010');
+              root.style.setProperty('--grey', '#E0E0E0');
+              root.style.setProperty('--dark-grey', '#585858');
+              root.style.setProperty('--header-grey', '#ebeaea');
+              root.style.setProperty('--almost-black', '#212121');
+              themeToggleBtn.textContent = 'dark mode';
+          }
+      }
+
+      // Check local storage for theme preference or use system preference
+      const savedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light');
+      setTheme(savedTheme);
+
+      themeToggleBtn.addEventListener('click', function() {
+          const currentTheme = themeToggleBtn.textContent.includes('light') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          setTheme(newTheme);
+          localStorage.setItem('theme', newTheme);
+      });
+  });
 </script>
 </html>

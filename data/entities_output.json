@@ -1,0 +1,1107 @@
+[
+    {
+        "text": "sanaa",
+        "label": "ORG",
+        "count": 12
+    },
+    {
+        "text": "jean",
+        "label": "PERSON",
+        "count": 14
+    },
+    {
+        "text": "new year\u2019s eve",
+        "label": "EVENT",
+        "count": 1
+    },
+    {
+        "text": "jean\u2019s",
+        "label": "ORG",
+        "count": 2
+    },
+    {
+        "text": "sam city",
+        "label": "GPE",
+        "count": 7
+    },
+    {
+        "text": "the orient hotel",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "yemen",
+        "label": "GPE",
+        "count": 7
+    },
+    {
+        "text": "the ministry of the interior",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "tahrir",
+        "label": "EVENT",
+        "count": 2
+    },
+    {
+        "text": "abdul quasser",
+        "label": "PERSON",
+        "count": 16
+    },
+    {
+        "text": "myriam",
+        "label": "PERSON",
+        "count": 40
+    },
+    {
+        "text": "fr\u00e9d\u00e9ric",
+        "label": "ORG",
+        "count": 2
+    },
+    {
+        "text": "london",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "egypt",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "abdul quarad",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "england",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "france",
+        "label": "GPE",
+        "count": 2
+    },
+    {
+        "text": "beit sinan",
+        "label": "GPE",
+        "count": 13
+    },
+    {
+        "text": "sinan",
+        "label": "GPE",
+        "count": 10
+    },
+    {
+        "text": "perfume",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "pascal",
+        "label": "PERSON",
+        "count": 3
+    },
+    {
+        "text": "unesco",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "qat",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "linda",
+        "label": "PERSON",
+        "count": 37
+    },
+    {
+        "text": "abdul wasser\u2019s",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "mudredj",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "2 yemenites",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "diwan",
+        "label": "PERSON",
+        "count": 4
+    },
+    {
+        "text": "mursa",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "abdul quasser\u2019s",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "beit sinan\u2019s",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "salem",
+        "label": "GPE",
+        "count": 3
+    },
+    {
+        "text": "amram",
+        "label": "GPE",
+        "count": 6
+    },
+    {
+        "text": "amram",
+        "label": "ORG",
+        "count": 3
+    },
+    {
+        "text": "al yaoud",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "abdul wasser",
+        "label": "PERSON",
+        "count": 3
+    },
+    {
+        "text": "shabbat",
+        "label": "PERSON",
+        "count": 6
+    },
+    {
+        "text": "qabilis",
+        "label": "GPE",
+        "count": 2
+    },
+    {
+        "text": "abdul warad",
+        "label": "PERSON",
+        "count": 6
+    },
+    {
+        "text": "wadi hared",
+        "label": "GPE",
+        "count": 4
+    },
+    {
+        "text": "al arjan",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "wadi al meh",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "beit hazeb",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "sira",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "ahmad",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "mursa",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "djellaba",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "sheikh sinan",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "warad",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "germany",
+        "label": "GPE",
+        "count": 2
+    },
+    {
+        "text": "israel",
+        "label": "GPE",
+        "count": 7
+    },
+    {
+        "text": "fortunately myriam",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "beil el aifa",
+        "label": "GPE",
+        "count": 2
+    },
+    {
+        "text": "sbah al",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "toyotas",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "arhab",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "yaya",
+        "label": "PERSON",
+        "count": 9
+    },
+    {
+        "text": "okra",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "rhilba",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "abdel quasser\u2019s",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "paris",
+        "label": "GPE",
+        "count": 5
+    },
+    {
+        "text": "sadik",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "phew",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "qat",
+        "label": "ORG",
+        "count": 2
+    },
+    {
+        "text": "abdul az",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "iraq",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "a.w.",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "ajar",
+        "label": "ORG",
+        "count": 7
+    },
+    {
+        "text": "amlah",
+        "label": "GPE",
+        "count": 4
+    },
+    {
+        "text": "amlah",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "us",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "succot",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "ezrat hashem",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "a. warad",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "quasser",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "sanaa",
+        "label": "GPE",
+        "count": 8
+    },
+    {
+        "text": "the",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "jean",
+        "label": "ORG",
+        "count": 3
+    },
+    {
+        "text": "sam",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "raida",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "raydah",
+        "label": "GPE",
+        "count": 16
+    },
+    {
+        "text": "ali",
+        "label": "PERSON",
+        "count": 23
+    },
+    {
+        "text": "dominique",
+        "label": "ORG",
+        "count": 2
+    },
+    {
+        "text": "bani abd",
+        "label": "PERSON",
+        "count": 9
+    },
+    {
+        "text": "newscaster",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "dominique champo",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "ajar",
+        "label": "PERSON",
+        "count": 5
+    },
+    {
+        "text": "yom ouarad",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "baquil",
+        "label": "ORG",
+        "count": 2
+    },
+    {
+        "text": "ashed",
+        "label": "ORG",
+        "count": 4
+    },
+    {
+        "text": "al madrad",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "asheds",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "mohammed",
+        "label": "PERSON",
+        "count": 8
+    },
+    {
+        "text": "baquils",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "baquil",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "abdul warab",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "italy",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "myrian",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "dominique champo",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "suliman",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "myriam",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "neturei karta",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "mohammed, ali",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "abdalah",
+        "label": "ORG",
+        "count": 10
+    },
+    {
+        "text": "marceau gasse",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "afif",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "muslim brothers",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "wash whiter",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "reunion with jean",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "simone tamar",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "constantine",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "algeria",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "sanaas",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "chai",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "raph",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "al yahudi",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "yemenites",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "saada saada",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "ajjah",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "rhammer",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "saada",
+        "label": "GPE",
+        "count": 17
+    },
+    {
+        "text": "cheyef",
+        "label": "ORG",
+        "count": 18
+    },
+    {
+        "text": "raolan",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "el rharban",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "john",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "cheyef",
+        "label": "PERSON",
+        "count": 3
+    },
+    {
+        "text": "mahdi",
+        "label": "ORG",
+        "count": 13
+    },
+    {
+        "text": "haidan",
+        "label": "GPE",
+        "count": 10
+    },
+    {
+        "text": "nashuan",
+        "label": "GPE",
+        "count": 3
+    },
+    {
+        "text": "ajars",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "cheyef, saleh",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "sagayn",
+        "label": "ORG",
+        "count": 7
+    },
+    {
+        "text": "facher",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "sagayn",
+        "label": "PERSON",
+        "count": 8
+    },
+    {
+        "text": "haidan",
+        "label": "ORG",
+        "count": 2
+    },
+    {
+        "text": "hussein",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "yousef schtari",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "jeradi",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "daoud",
+        "label": "PERSON",
+        "count": 3
+    },
+    {
+        "text": "lewi",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "101st",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "abdalah",
+        "label": "PERSON",
+        "count": 3
+    },
+    {
+        "text": "saleh",
+        "label": "PERSON",
+        "count": 7
+    },
+    {
+        "text": "she\u00efef",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "jamil",
+        "label": "PERSON",
+        "count": 4
+    },
+    {
+        "text": "j.r.",
+        "label": "GPE",
+        "count": 4
+    },
+    {
+        "text": "j.r.",
+        "label": "PERSON",
+        "count": 3
+    },
+    {
+        "text": "fauth",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "yousef chtari\u2019s",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "losay & rhoursan",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "losay",
+        "label": "PERSON",
+        "count": 5
+    },
+    {
+        "text": "hoursan",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "youssef chtari\u2019s",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "rome",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "vienna",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "plo",
+        "label": "ORG",
+        "count": 4
+    },
+    {
+        "text": "tunis and operation moses",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "daoud sabari",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "j.r.",
+        "label": "ORG",
+        "count": 4
+    },
+    {
+        "text": "jerhadi",
+        "label": "GPE",
+        "count": 11
+    },
+    {
+        "text": "rhouf",
+        "label": "PERSON",
+        "count": 3
+    },
+    {
+        "text": "chameleon",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "j.r.\u2019s",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "yaya faez",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "youssef chtari",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "jamil",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "yemenites",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "fauth",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "maurice",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "stella",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "india",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "losay",
+        "label": "GPE",
+        "count": 2
+    },
+    {
+        "text": "linda & myriam",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "sagayn",
+        "label": "GPE",
+        "count": 2
+    },
+    {
+        "text": "gassem",
+        "label": "PERSON",
+        "count": 15
+    },
+    {
+        "text": "nivea",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "narhla",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "nashuan",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "el rhamiss",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "rhouf",
+        "label": "GPE",
+        "count": 2
+    },
+    {
+        "text": "mahdi, saleh, facher",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "souk el tani",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "america",
+        "label": "GPE",
+        "count": 3
+    },
+    {
+        "text": "pasolini",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "el guef",
+        "label": "ORG",
+        "count": 4
+    },
+    {
+        "text": "moussa",
+        "label": "PERSON",
+        "count": 7
+    },
+    {
+        "text": "salah",
+        "label": "ORG",
+        "count": 2
+    },
+    {
+        "text": "ussr",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "salah",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "\u2019s",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "rock & roll",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "amlah",
+        "label": "ORG",
+        "count": 10
+    },
+    {
+        "text": "al talehr",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "saada-amlah",
+        "label": "ORG",
+        "count": 2
+    },
+    {
+        "text": "hassan",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "toyota",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "basal\u2019s",
+        "label": "ORG",
+        "count": 4
+    },
+    {
+        "text": "djebel barrach",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "rharir",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "najran",
+        "label": "GPE",
+        "count": 2
+    },
+    {
+        "text": "basal",
+        "label": "PERSON",
+        "count": 8
+    },
+    {
+        "text": "kitaf",
+        "label": "GPE",
+        "count": 5
+    },
+    {
+        "text": "al abou joubara",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "new york",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "basal\u2019s old",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "radio france international",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "saudi arabia",
+        "label": "GPE",
+        "count": 2
+    },
+    {
+        "text": "wadi amlah",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "bedouin",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "wadi kitaf",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "sanaa",
+        "label": "PERSON",
+        "count": 2
+    },
+    {
+        "text": "al yahood",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "jew",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "said",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "salehs",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "rarhir",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "banach barach",
+        "label": "PERSON",
+        "count": 1
+    },
+    {
+        "text": "hotel rharban",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "imam",
+        "label": "GPE",
+        "count": 1
+    },
+    {
+        "text": "ps",
+        "label": "ORG",
+        "count": 1
+    },
+    {
+        "text": "i.",
+        "label": "ORG",
+        "count": 1
+    }
+]

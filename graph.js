@@ -82,11 +82,22 @@ export function setupGraph() {
         };
 
         p.mouseReleased = function() {
-            dragging = false;
-            let textColumn = document.getElementById('text-column');
+            if (dragging) {
+                dragging = false;
+                let textColumn = document.getElementById('text-column');
+                console.log("Calling handleP5Scroll from mouseReleased");
+                handleP5Scroll(textColumn);
+            }
+        };
 
-            // Trigger the scrollHandler with the mock event
-            handleP5Scroll(textColumn);
+        p.mouseClicked = function() {
+            if (!dragging && p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height) {
+                let textColumn = document.getElementById('text-column');
+                console.log("Calling handleP5Scroll from mouseClicked");
+                const mappedPosClick = p.map(p.mouseY, 0, p.height, 0, textColumn.scrollHeight - window.innerHeight);
+                textColumn.scrollTop = mappedPosClick;
+                handleP5Scroll(textColumn);
+            }
         };
 
         p.mouseDragged = function() {

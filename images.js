@@ -44,11 +44,13 @@ function createFrameElement(title, url, idx, people, place, isLast) {
             utils.createElement('span', 'place metadata-row', `Taken in ${place} `)
         );
     }
-    if (people) {
+    if (people && people != 'NMI') {
         metadataLayoutElement.append(
             utils.createElement('span', 'people metadata-row', `with ${people}`)
         );
     }
+
+    metadataLayoutElement.append(utils.createElement('span', '', `.`));
 
     frameElement.append(imgContainer, titleRow, metadataLayoutElement);
     return frameElement;
@@ -105,6 +107,7 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
     let parentElement = document.getElementById(parentId);
     let fragment = document.createDocumentFragment();
     let imagePromises = [];
+    let frameCount = 0; // Counter to keep track of the number of frames generated
 
     for (let recordIndex = 0; recordIndex < records.length; recordIndex++) {
         let record = records[recordIndex];
@@ -128,15 +131,16 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
                     currentMetadata.Title,
                     `https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`,
                     0,
-                    currentMetadata.metaDepictedPeople,
+                    currentMetadata.polishedPeople,
                     record.place
                 );
 
                 outerFrame.appendChild(firstFrameElement);
 
-                if (recordIndex < 20) {
-                imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`));
+                if (frameCount < 30) {
+                    imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`));
                 }
+                frameCount++;
 
                 metadataArray.push({
                     element: firstFrameElement,
@@ -164,15 +168,19 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
                     currentMetadata.Title,
                     `https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`,
                     i,
-                    currentMetadata.metaDepictedPeople,
+                    currentMetadata.polishedPeople,
                     record.place,
                     isLast
                 );
 
                 outerFrame.appendChild(frameElement);
 
-                frameElement.classList.add('invisible')
-                imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`));
+                frameElement.classList.add('invisible');
+
+                if (frameCount < 30) {
+                    imagePromises.push(loadImage(`https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`));
+                }
+                frameCount++;
 
                 metadataArray.push({
                     element: frameElement,
@@ -236,7 +244,6 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
 
     if (allFramesGenerated) {
         toggleHidden();
-        // addNumber();
         setImageHeights();
     }
 
@@ -247,15 +254,20 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
         }
     });
 
-    // Wait for all images to load before removing the loading overlay
+    // Wait for the first 30 images to load before removing the loading overlay
     try {
-        await Promise.all(imagePromises);
+        await Promise.all(imagePromises.slice(0, 30)); // Only wait for the first 30 images
         removeLoadingOverlay();
-        // tutorial.beginningtime();
-        scroll.attachDotsEventListeners();
     } catch (error) {
         console.error('Error loading images', error);
     }
+
+    // Attach event listeners after all frames are loaded
+    Promise.all(imagePromises).then(() => {
+      addNumber();
+        scroll.attachDotsEventListeners();
+        attachArrowEventListeners();
+    });
 }
 
 function updateMetadata(photonumElement, idx, length) {
@@ -322,10 +334,27 @@ function updateInformationOnScroll(outerFrame) {
     }
 }
 
+function attachArrowEventListeners() {
+    let arrows = document.querySelectorAll('.arrow');
+    arrows.forEach(arrow => {
+        arrow.addEventListener('click', (event) => {
+            let outerFrame = event.target.closest('.frame-container').querySelector('.outer-frame');
+            let frameWidth = outerFrame.querySelector('.frame').clientWidth;
+            let gap = parseFloat(getComputedStyle(outerFrame).getPropertyValue('column-gap')) || 0;
+            let scrollAmount = frameWidth + gap;
+            if (event.target.classList.contains('arrowleft')) {
+                outerFrame.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                outerFrame.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        });
+    });
+}
+
 function addNumber() {
     let connected = Array.from(document.querySelectorAll('.frame-container.connected'));
     connected.forEach((d) => {
-        d.querySelector('.dot').innerHTML = (connected.indexOf(d) + 1);
+        // d.querySelector('.dot').innerHTML = (connected.indexOf(d) + 1);
         d.querySelector('.dot').setAttribute('data-dot-id', (connected.indexOf(d) + 1));
     });
 }

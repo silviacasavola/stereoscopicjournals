@@ -104,9 +104,16 @@ function frameReplacement() {
       jsonData = data;
 
       const metadatacells = document.querySelectorAll('.metadata-layout');
+      const titles = document.querySelectorAll('.title-row');
       const titlecells = document.querySelectorAll('.frame .title');
 
       metadatacells.forEach(element => {
+        replacePeopleInElement(element, jsonData);
+        replacePlacesInElement(element, jsonData);
+        replaceKeywordsInElement(element, jsonData);
+      });
+
+      titles.forEach(element => {
         replacePeopleInElement(element, jsonData);
         replacePlacesInElement(element, jsonData);
         replaceKeywordsInElement(element, jsonData);
