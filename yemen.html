@@ -109,8 +109,8 @@
       }
 
       // Check local storage for theme preference or use system preference
-      const savedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light');
-      setTheme(savedTheme);
+          const savedTheme = localStorage.getItem('theme') || 'light';
+          setTheme(savedTheme);
 
       themeToggleBtn.addEventListener('click', function() {
           const currentTheme = themeToggleBtn.textContent.includes('light') ? 'dark' : 'light';

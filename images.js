@@ -31,6 +31,7 @@ function createFrameElement(title, url, idx, people, place, isLast) {
 
     imageElement.onload = () => {
         setElementWidths(imgContainer);
+        setMaxHeight(imageElement);
     };
 
     imgContainer.append(imageElement);
@@ -44,13 +45,11 @@ function createFrameElement(title, url, idx, people, place, isLast) {
             utils.createElement('span', 'place metadata-row', `Taken in ${place} `)
         );
     }
-    if (people && people != 'NMI') {
+    if (people) {
         metadataLayoutElement.append(
             utils.createElement('span', 'people metadata-row', `with ${people}`)
         );
     }
-
-    metadataLayoutElement.append(utils.createElement('span', '', `.`));
 
     frameElement.append(imgContainer, titleRow, metadataLayoutElement);
     return frameElement;
@@ -90,6 +89,13 @@ function createFirstImageFrame(title, url, idx, people, place) {
 
     frameElement.append(imgContainer, titleRow, metadataLayoutElement);
     return frameElement;
+}
+
+// Function to set the max height of images
+function setMaxHeight(imageElement) {
+    if (firstImageHeightVh) {
+        imageElement.style.maxHeight = `${firstImageHeightVh}vh`;
+    }
 }
 
 // Function to load images and return a promise that resolves when all images are loaded
@@ -168,7 +174,7 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
                     currentMetadata.Title,
                     `https://gradim.fh-potsdam.de/omeka-s/files/medium/${id}.jpg`,
                     i,
-                    currentMetadata.polishedPeople,
+                    currentMetadata.metaDepictedPeople,
                     record.place,
                     isLast
                 );
@@ -264,7 +270,6 @@ export async function loadAndDisplayImages(records, metadataMain, parentId) {
 
     // Attach event listeners after all frames are loaded
     Promise.all(imagePromises).then(() => {
-      addNumber();
         scroll.attachDotsEventListeners();
         attachArrowEventListeners();
     });
@@ -354,7 +359,7 @@ function attachArrowEventListeners() {
 function addNumber() {
     let connected = Array.from(document.querySelectorAll('.frame-container.connected'));
     connected.forEach((d) => {
-        // d.querySelector('.dot').innerHTML = (connected.indexOf(d) + 1);
+        d.querySelector('.dot').innerHTML = (connected.indexOf(d) + 1);
         d.querySelector('.dot').setAttribute('data-dot-id', (connected.indexOf(d) + 1));
     });
 }
@@ -377,5 +382,5 @@ function removeLoadingOverlay() {
     const overlaytimeout = setTimeout(() => {
         document.getElementById('overlay1').remove();
         clearTimeout(overlaytimeout);
-    }, 1600);
+    }, 500);
 }

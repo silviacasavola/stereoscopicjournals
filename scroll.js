@@ -1,4 +1,3 @@
-
 export function getPositions(parent, selector) {
     const parentElement = document.getElementById(parent.id);
     let allElements = Array.from(parentElement.querySelectorAll(selector));
@@ -126,18 +125,21 @@ export function scrollHandler(event) {
         let targetElement = findMatchingElement(targetContainer, sourceElement.connected_index, targetSelector);
 
         if (targetElement) {
+            let targetContainerParent = targetElement.closest('.frame-container') || targetElement.closest('.page');
+            let sourceContainerParent = sourceElement.element.closest('.frame-container') || sourceElement.element.closest('.page');
+
+            if (!targetContainerParent.classList.contains('hidden') && !sourceContainerParent.classList.contains('hidden')) {
+                scrollToElement(targetContainer, targetElement);
+            }
+
             highlightElement(sourceContainer, sourceElement.element);
             highlightElement(targetContainer, targetElement);
-
-            // Scroll to the target element in the other column
-            scrollToElement(targetContainer, targetElement);
 
             // Update the last closest element
             lastClosestElement = sourceElement;
         }
     }
 }
-
 
 export function attachDotsEventListeners() {
     setTimeout(() => {
@@ -159,6 +161,7 @@ export function attachDotsEventListeners() {
 }
 
 function elementClickHandler(event) {
+    console.log('Dot clicked:', event.target);
     let textColumn = document.getElementById('text-column');
     let imagesColumn = document.getElementById('images-column');
 
@@ -168,13 +171,21 @@ function elementClickHandler(event) {
         return;
     }
 
+    console.log('Source column:', sourceColumn);
+
     let targetColumn = sourceColumn.id === 'text-column' ? imagesColumn : textColumn;
+
+    console.log('Target column:', targetColumn);
 
     let sourceContainer = sourceColumn.children[0];
     let targetContainer = targetColumn.children[0];
 
+    console.log('Source container:', sourceContainer);
+    console.log('Target container:', targetContainer);
+
     let dataSelector = event.target.getAttribute('data-dot-id');
     if (dataSelector !== null) {
+        console.log('Data selector:', dataSelector);
         let matchingDot = targetContainer.querySelector(`.dot[data-dot-id="${dataSelector}"]`);
         if (!matchingDot) {
             console.error('No matching dot found in the target container.');
@@ -185,14 +196,18 @@ function elementClickHandler(event) {
         console.log('Matching dot:', matchingDot);
 
         let matchingElement = matchingDot.closest('.frame-container.connected') || matchingDot.closest('.page');
-        if (!matchingElement) {
-            console.error('No matching element found for the matching dot.');
+        if (!matchingElement || matchingElement.classList.contains('hidden')) {
+            console.error('No matching element found for the matching dot or it is hidden.');
             return;
         }
 
+        console.log('Matching element:', matchingElement);
+
         // Scroll to the clicked dot in the source container
+        console.log('Scrolling to clicked dot:', event.target);
         scrollToElement(sourceContainer, event.target);
         // Scroll to the matching element in the target container
+        console.log('Scrolling to matching element:', matchingElement);
         scrollToElement(targetContainer, matchingElement);
         highlightElement(sourceContainer, event.target);
         highlightElement(targetContainer, matchingElement);
@@ -200,6 +215,8 @@ function elementClickHandler(event) {
         console.error('No data-dot-id found for the clicked dot.');
     }
 }
+
+
 
 export function handleP5Scroll(element) {
     const scrollTop = element.scrollTop - 50;
