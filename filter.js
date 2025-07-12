@@ -10,28 +10,51 @@ function toggleHidden() {
   });
 }
 
-function replacePeopleInElement(element, jsonData) {
+function replacePeopleInElement(element, jsonData, useCanonical = false) {
   if (!element) return;
 
   const people = jsonData.people;
-  if (people && Array.isArray(people)) {
-    people.forEach((person, index) => {
-      const personVariants = person.split('; ').map(person => person.trim());
-      const personId = `person${index}`;
+  if (!Array.isArray(people)) return;
 
-      personVariants.sort((a, b) => b.length - a.length);
+  let originalHTML = element.innerHTML;
+  const replacements = []; // Will store all matches and where to insert spans
 
-      personVariants.forEach(personVariant => {
-        const regex = new RegExp(`\\b${personVariant}\\b`, 'gi');
-        const newElement = document.createElement('div');
-        newElement.innerHTML = element.innerHTML.replace(regex, match => {
-          return `<span class="filter-link person-link" id='${personId}'>${match}<span class="closebtn">X</span></span>`;
+  people.forEach((person, index) => {
+    const personVariants = person.split('; ').map(p => p.trim());
+    const canonical = personVariants[0];
+    const personId = `person${index}`;
+
+    // Sort longest to shortest for greedy match
+    personVariants.sort((a, b) => b.length - a.length);
+
+    personVariants.forEach(variant => {
+      const escapedVariant = variant.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`(^|[^\\w])(${escapedVariant})(?=[^\\w]|$)`, 'gi');
+
+      originalHTML = originalHTML.replace(regex, (match, prefix, matchedText, offset) => {
+        const placeholder = `__REPLACE_PERSON_${replacements.length}__`;
+        replacements.push({
+          placeholder,
+          personId,
+          displayText: useCanonical ? canonical : matchedText,
+          prefix
         });
-        element.innerHTML = newElement.innerHTML;
+        return `${prefix}${placeholder}`;
       });
     });
-  }
+  });
+
+  // Final pass: replace placeholders with actual span elements
+  replacements.forEach(rep => {
+    const span = `<span class="filter-link person-link" id='${rep.personId}'>${rep.displayText}<span class="closebtn">X</span></span>`;
+    originalHTML = originalHTML.replace(rep.placeholder, span);
+  });
+
+  element.innerHTML = originalHTML;
 }
+
+
+
 
 function replacePlacesInElement(element, jsonData) {
   if (!element) return;
@@ -108,13 +131,13 @@ function frameReplacement() {
       const titlecells = document.querySelectorAll('.frame .title');
 
       metadatacells.forEach(element => {
-        replacePeopleInElement(element, jsonData);
+        replacePeopleInElement(element, jsonData, true);  // useCanonical = true
         replacePlacesInElement(element, jsonData);
         replaceKeywordsInElement(element, jsonData);
       });
 
       titles.forEach(element => {
-        replacePeopleInElement(element, jsonData);
+        replacePeopleInElement(element, jsonData, true);  // useCanonical = true
         replacePlacesInElement(element, jsonData);
         replaceKeywordsInElement(element, jsonData);
       });

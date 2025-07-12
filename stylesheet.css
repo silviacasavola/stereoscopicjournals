@@ -311,6 +311,10 @@ canvas {
   min-width: 0; /* Ensure they can shrink below their content width */
 }
 
+.title-row::after, .metadata-layout::after {
+  content: ".";
+}
+
 .frame.invisible .metadata-layout, .frame.invisible .title-row {
   opacity: 0;
 }
